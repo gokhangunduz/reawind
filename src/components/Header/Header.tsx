@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
 import { Link, NavLink } from "react-router-dom";
+import { slide as Menu } from "react-burger-menu";
 
 export const Header: FC = () => {
   const navRoutes = [
@@ -10,22 +11,20 @@ export const Header: FC = () => {
   ];
 
   return (
-    <header className="py-4 px-40 bg-layer-50 dark:bg-layer-900 dark:text-layer-50 shadow-lg transition-all duration-500">
-      <div className="flex justify-between">
-        <Link to="/" className="">
-          Gökhan Gündüz
-        </Link>
-        <div className="flex gap-12">
-          <ul className="flex gap-6">
-            {navRoutes.map((route) => (
-              <li key={route.path}>
-                <NavLink to={route.path}>{route.name}</NavLink>
-              </li>
-            ))}
-          </ul>
-          <div>
-            <ThemeToggle />
-          </div>
+    <header className="h-20 px-80 flex items-center justify-between  bg-layer-100 dark:bg-layer-800 dark:text-layer-50 text-base font-normal shadow-lg transition-all duration-500 animate__animated animate__fadeInDown">
+      <Link className="font-semibold" to="/">
+        Gökhan Gündüz
+      </Link>
+      <div className="flex gap-12">
+        <ul className="flex gap-6 md:hidden">
+          {navRoutes.map((route) => (
+            <li key={route.path}>
+              <NavLink to={route.path}>{route.name}</NavLink>
+            </li>
+          ))}
+        </ul>
+        <div>
+          <ThemeToggle />
         </div>
       </div>
     </header>
