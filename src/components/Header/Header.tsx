@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
 import { Link, NavLink } from "react-router-dom";
-import { slide as Menu } from "react-burger-menu";
 
 export const Header: FC = () => {
   const navRoutes = [
@@ -11,7 +10,7 @@ export const Header: FC = () => {
   ];
 
   return (
-    <header className="h-20 px-80 flex items-center justify-between  bg-layer-100 dark:bg-layer-800 dark:text-layer-50 text-base font-normal shadow-lg transition-all duration-500 animate__animated animate__fadeInDown">
+    <header className="h-20 px-80 2xl:px-80 xl:px-40 lg:px-20 flex items-center justify-between  bg-layer-100 dark:bg-layer-800 dark:text-layer-50 text-base font-normal shadow-lg transition-all duration-500 animate__animated animate__fadeInDown">
       <Link className="font-semibold" to="/">
         Gökhan Gündüz
       </Link>
