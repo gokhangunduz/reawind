@@ -6,11 +6,14 @@ export const ThemeToggle: FC = () => {
   const { theme, setTheme }: any = useContext(ThemeContext);
 
   return (
-    <div onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+    <div
+      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+      className="cursor-pointer"
+    >
       {theme === "light" ? (
-        <TbMoon size={24} className="animate__animated animate__rotateIn" />
+        <TbMoon size={28} className="animate__animated animate__rotateIn" />
       ) : (
-        <TbSun size={24} className="animate__animated animate__rotateIn" />
+        <TbSun size={28} className="animate__animated animate__rotateIn" />
       )}
     </div>
   );

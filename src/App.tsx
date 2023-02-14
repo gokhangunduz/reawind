@@ -1,14 +1,18 @@
 import React from "react";
-import { AppRoutes } from "./routes/AppRoutes";
+import AppRoutes from "./routes/AppRoutes";
 import ThemeContext from "./context/ThemeContext";
+import Sidebar from "./components/Sidebar/Sidebar";
+import SidebarContext from "./context/SidebarContext";
 import "animate.css";
 
 function App() {
   return (
     <>
-      <ThemeContext>
-        <AppRoutes />
-      </ThemeContext>
+      <SidebarContext>
+        <ThemeContext>
+          <AppRoutes />
+        </ThemeContext>
+      </SidebarContext>
     </>
   );
 }

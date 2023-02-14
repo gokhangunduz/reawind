@@ -1,31 +1,15 @@
-import React, { FC } from "react";
+import React, { ReactElement, useContext } from "react";
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
-import { Link, NavLink } from "react-router-dom";
+import { MenuToggle } from "../MenuToggle/MenuToggle";
 
-export const Header: FC = () => {
-  const navRoutes = [
-    { path: "/", name: "Home" },
-    { path: "/blog", name: "Blog" },
-    { path: "/contact", name: "Contact" },
-  ];
-
+export default function Header(): ReactElement {
   return (
-    <header className="h-20 px-80 2xl:px-80 xl:px-40 lg:px-20 flex items-center justify-between  bg-layer-100 dark:bg-layer-800 dark:text-layer-50 text-base font-normal shadow-lg transition-all duration-500 animate__animated animate__fadeInDown">
-      <Link className="font-semibold" to="/">
-        Gökhan Gündüz
-      </Link>
-      <div className="flex gap-12">
-        <ul className="flex gap-6 md:hidden">
-          {navRoutes.map((route) => (
-            <li key={route.path}>
-              <NavLink to={route.path}>{route.name}</NavLink>
-            </li>
-          ))}
-        </ul>
-        <div>
-          <ThemeToggle />
-        </div>
+    <header className="flex items-center justify-between h-16 px-6 lg:px-40 border-b border-layer-light-100 dark:border-layer-dark-800 dark:text-layer-light-50 shadow-sm transition-all duration-500">
+      <h1 className="text-lg font-semibold">Gökhan Gündüz</h1>
+      <div className="flex gap-8">
+        <ThemeToggle />
+        <MenuToggle />
       </div>
     </header>
   );
-};
+}

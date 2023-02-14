@@ -1,29 +1,41 @@
-import React, { FC } from "react";
-import { SlSocialGithub, SlSocialLinkedin } from "react-icons/sl";
+import React from "react";
+import { FaGithub, FaLinkedin, FaPaperPlane } from "react-icons/fa";
 
-export const Footer: FC = () => {
+export default function Footer() {
   return (
-    <footer className="h-12 flex items-center justify-center">
-      <ul className="flex gap-4 items-center justify-center dark:text-layer-50 animate__animated animate__fadeInUp">
+    <footer className="flex flex-col gap-4 items-center justify-center h-20">
+      <ul className="flex items-center justify-center gap-10">
         <li>
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://linkedin.com/in/gokhangunduz"
+          >
+            <FaLinkedin className="text-[1.75rem] hover:text-[1.5rem] text-layer-dark-900 hover:text-layer-dark-400 dark:text-layer-light-50 dark:hover:text-layer-light-400 transition-all duration-500" />
+          </a>
+        </li>
+        <li className="flex items-center justify-center">
           <a
             target="_blank"
             rel="noreferrer"
             href="https://github.com/gokhangunduz"
           >
-            <SlSocialGithub size={24} />
+            <FaGithub className="text-[1.75rem] hover:text-[1.5rem] text-layer-dark-900 hover:text-layer-dark-400 dark:text-layer-light-50 dark:hover:text-layer-light-400 transition-all duration-500" />
           </a>
         </li>
         <li>
           <a
             target="_blank"
             rel="noreferrer"
-            href="https://linkedin.com/in/iamgokhangunduz"
+            href="mailto:mail@gokhangunduz.com.tr"
           >
-            <SlSocialLinkedin size={24} />
+            <FaPaperPlane className="text-[1.5rem] hover:text-[1.25rem] text-layer-dark-900 hover:text-layer-dark-400 dark:text-layer-light-50 dark:hover:text-layer-light-400 transition-all duration-500" />
           </a>
         </li>
       </ul>
+      <span className="text-xs font-light text-layer-dark-900 dark:text-layer-light-50 transition-all duration-500">
+        2023 • Gökhan Gündüz
+      </span>
     </footer>
   );
-};
+}

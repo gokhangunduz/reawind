@@ -1,11 +1,13 @@
-import React, { FC } from "react";
+import React, { Fragment, ReactElement, useContext } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { PublicLayout } from "../layouts/PublicLayout";
-import { Home } from "../pages/public/Home/Home";
-import { Blog } from "../pages/public/Blog/Blog";
-import { Contact } from "../pages/public/Contact/Contact";
+import PublicLayout from "../layouts/PublicLayout";
+import Home from "../pages/public/Home";
+import Blog from "../pages/public/Blog";
+import Contact from "../pages/public/Contact";
+import Sidebar from "../components/Sidebar/Sidebar";
+import { SidebarContext } from "../context/SidebarContext";
 
-export const AppRoutes: FC = () => {
+export default function AppRoutes(): ReactElement {
   return (
     <BrowserRouter>
       <Routes>
@@ -18,4 +20,4 @@ export const AppRoutes: FC = () => {
       </Routes>
     </BrowserRouter>
   );
-};
+}

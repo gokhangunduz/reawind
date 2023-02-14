@@ -1,20 +1,27 @@
-import React, { FC } from "react";
+import React, { Fragment, ReactElement, useContext } from "react";
 import { Outlet } from "react-router-dom";
-import { Header } from "../components/Header/Header";
-import { Footer } from "../components/Footer/Footer";
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
+import { SidebarContext } from "../context/SidebarContext";
+import Sidebar from "../components/Sidebar/Sidebar";
 
-export const PublicLayout: FC = () => {
+export default function PublicLayout(): ReactElement {
+  const { isOpen, setIsOpen }: any = useContext(SidebarContext);
+
+  const handleSidebar = () => {
+    if (isOpen) {
+      setIsOpen(false);
+    }
+  };
+
   return (
-    <div>
-      <div className="sticky w-full top-0">
+    <Fragment>
+      <div onClick={() => isOpen && handleSidebar()}>
         <Header />
-      </div>
-      <div style={{ minHeight: "calc(100vh - 8rem)" }}>
         <Outlet />
-      </div>
-      <div>
         <Footer />
       </div>
-    </div>
+      {isOpen && <Sidebar />}
+    </Fragment>
   );
-};
+}
