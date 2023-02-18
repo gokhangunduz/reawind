@@ -1,7 +1,7 @@
 import React from "react";
 import AppRoutes from "./routes/AppRoutes";
-import ThemeProvider from "./provider/ThemeProvider";
-import SidebarProvider from "./provider/SidebarProvider";
+import ThemeProvider from "./providers/ThemeProvider";
+import SidebarProvider from "./providers/SidebarProvider";
 import DisableRightClick from "./utils/DisableRightClick";
 import "animate.css";
 

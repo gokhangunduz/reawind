@@ -8,10 +8,10 @@ import React, {
 import { Outlet, useLocation } from "react-router-dom";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
-import { SidebarContext } from "../context/SidebarContext";
+import { SidebarContext } from "../contexts/SidebarContext";
 import Sidebar from "../components/Sidebar/Sidebar";
 import LoadingBar from "react-top-loading-bar";
-import { ThemeContext } from "../context/ThemeContext";
+import { ThemeContext } from "../contexts/ThemeContext";
 // @ts-ignore
 import ReactCursorEffect from "react-dancing-lines";
 
@@ -33,8 +33,6 @@ export default function MainLayout(): ReactElement {
       setIsOpen(false);
     }
   };
-
-  console.log("AAA", theme);
 
   return (
     <Fragment>

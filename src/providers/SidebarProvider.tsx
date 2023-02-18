@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { SidebarContext } from "../context/SidebarContext";
+import { SidebarContext } from "../contexts/SidebarContext";
 
 export default function SidebarProvider({ children }: any) {
   const [isOpen, setIsOpen] = useState<boolean>(false);

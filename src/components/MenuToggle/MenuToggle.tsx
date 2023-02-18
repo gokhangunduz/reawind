@@ -1,6 +1,6 @@
 import React, { FC, useContext } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { SidebarContext } from "../../context/SidebarContext";
+import { SidebarContext } from "../../contexts/SidebarContext";
 
 export const MenuToggle: FC = () => {
   const { isOpen, setIsOpen }: any = useContext(SidebarContext);

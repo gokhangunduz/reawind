@@ -1,5 +1,5 @@
 import React, { ReactElement, useEffect } from "react";
-import { ThemeContext } from "../context/ThemeContext";
+import { ThemeContext } from "../contexts/ThemeContext";
 
 export default function ThemeProvider({ children }: any): ReactElement {
   const [theme, setTheme] = React.useState<string>(
