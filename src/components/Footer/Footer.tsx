@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin, FaPaperPlane } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col gap-4 items-center justify-center h-20 animate__animated animate__fadeInUp">
+    <footer className="flex flex-col gap-4 items-center justify-center h-40 animate__animated animate__fadeInUp">
       <ul className="flex items-center justify-center gap-10">
         <li>
           <a

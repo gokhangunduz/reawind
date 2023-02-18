@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import PublicLayout from "../layouts/PublicLayout";
+import MainLayout from "../layouts/MainLayout";
 import Intro from "../pages/Intro/Intro";
 import Blog from "../pages/Blog/Blog";
 import Contact from "../pages/Contact/Contact";
@@ -12,7 +12,7 @@ export default function AppRoutes(): ReactElement {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<PublicLayout />}>
+        <Route element={<MainLayout />}>
           <Route path="/" element={<Intro />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/projects" element={<Projects />} />

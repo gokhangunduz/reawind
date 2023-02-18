@@ -12,7 +12,7 @@ export default function Post(): ReactElement {
 
   useEffect(() => {
     axios
-      .get(`/post/${url?.post}.md`)
+      .get(`/blog/post/${url?.post}.md`)
       .then(function (response) {
         setPost(response.data);
       })
@@ -28,7 +28,11 @@ export default function Post(): ReactElement {
   return (
     <div className="animate__animated animate__zoomIn">
       <PageHeader title={title} subtitle="Gökhan Gündüz" />
-      <MarkdownPreview source={post} className="transition-all duration-500" />
+      <MarkdownPreview
+        source={post}
+        style={{ backgroundColor: "transparent" }}
+        className="transition-all duration-500"
+      />
     </div>
   );
 }
