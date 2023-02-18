@@ -37,7 +37,10 @@ export default function PublicLayout(): ReactElement {
         onClick={() => isOpen && handleSidebar()}
       >
         <Header />
-        <div style={{ minHeight: "calc(100vh - 9rem)" }}>
+        <div
+          className="lg:px-48 xl:px-80 2xl:px-[23rem]"
+          style={{ minHeight: "calc(100vh - 9rem)" }}
+        >
           <Outlet />
         </div>
         <Footer />

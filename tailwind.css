@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 code {
   @apply transition-all duration-500;
 }

@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import AppRoutes from "./routes/AppRoutes";
-import ThemeContext from "./context/ThemeContext";
-import SidebarContext from "./context/SidebarContext";
+import ThemeProvider from "./provider/ThemeProvider";
+import SidebarProvider from "./provider/SidebarProvider";
+import DisableRightClick from "./utils/DisableRightClick";
 import "animate.css";
 
 function App() {
   return (
     <>
-      <SidebarContext>
-        <ThemeContext>
+      <SidebarProvider>
+        <ThemeProvider>
+          <DisableRightClick />
           <AppRoutes />
-        </ThemeContext>
-      </SidebarContext>
+        </ThemeProvider>
+      </SidebarProvider>
     </>
   );
 }

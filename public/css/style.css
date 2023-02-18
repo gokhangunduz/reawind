@@ -573,8 +573,16 @@ video {
   right: 0px;
 }
 
+.col-span-1{
+  grid-column: span 1 / span 1;
+}
+
 .flex{
   display: flex;
+}
+
+.grid{
+  display: grid;
 }
 
 .h-20{
@@ -583,6 +591,10 @@ video {
 
 .h-16{
   height: 4rem;
+}
+
+.h-64{
+  height: 16rem;
 }
 
 .h-screen{
@@ -597,8 +609,8 @@ video {
   height: 100%;
 }
 
-.w-72{
-  width: 18rem;
+.w-1\/2{
+  width: 50%;
 }
 
 .w-28{
@@ -607,6 +619,10 @@ video {
 
 .cursor-pointer{
   cursor: pointer;
+}
+
+.grid-cols-2{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .flex-col{
@@ -664,21 +680,6 @@ video {
   padding-right: 1.5rem;
 }
 
-.px-40{
-  padding-left: 10rem;
-  padding-right: 10rem;
-}
-
-.px-60{
-  padding-left: 15rem;
-  padding-right: 15rem;
-}
-
-.px-80{
-  padding-left: 20rem;
-  padding-right: 20rem;
-}
-
 .text-center{
   text-align: center;
 }
@@ -701,6 +702,11 @@ video {
   line-height: 1.75rem;
 }
 
+.text-5xl{
+  font-size: 3rem;
+  line-height: 1;
+}
+
 .text-xl{
   font-size: 1.25rem;
   line-height: 1.75rem;
@@ -711,17 +717,16 @@ video {
   line-height: 2.5rem;
 }
 
-.text-2xl{
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-
 .font-light{
   font-weight: 300;
 }
 
 .font-semibold{
   font-weight: 600;
+}
+
+.font-normal{
+  font-weight: 400;
 }
 
 .font-bold{
@@ -731,6 +736,11 @@ video {
 .text-layer-dark-900{
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.text-layer-dark-800{
+  --tw-text-opacity: 1;
+  color: rgb(20 20 20 / var(--tw-text-opacity));
 }
 
 .text-layer-dark-600{
@@ -766,6 +776,10 @@ video {
   transition-duration: 500ms;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 code{
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -798,6 +812,11 @@ code{
   border-color: rgb(20 20 20 / var(--tw-border-opacity));
 }
 
+.dark .dark\:border-layer-dark-700{
+  --tw-border-opacity: 1;
+  border-color: rgb(41 41 41 / var(--tw-border-opacity));
+}
+
 .dark .dark\:bg-layer-dark-900{
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
@@ -806,6 +825,11 @@ code{
 .dark .dark\:text-layer-light-50{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.dark .dark\:text-layer-light-200{
+  --tw-text-opacity: 1;
+  color: rgb(214 214 214 / var(--tw-text-opacity));
 }
 
 .dark .dark\:text-layer-light-100{
@@ -818,19 +842,87 @@ code{
   color: rgb(173 173 173 / var(--tw-text-opacity));
 }
 
-@media (min-width: 1024px){
-  .lg\:px-20{
-    padding-left: 5rem;
-    padding-right: 5rem;
+@media (min-width: 640px){
+  .sm\:gap-6{
+    gap: 1.5rem;
   }
 
-  .lg\:text-7xl{
+  .sm\:text-5xl{
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .sm\:text-xl{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}
+
+@media (min-width: 768px){
+  .md\:gap-8{
+    gap: 2rem;
+  }
+
+  .md\:text-6xl{
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+
+  .md\:text-2xl{
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+@media (min-width: 1024px){
+  .lg\:w-1\/3{
+    width: 33.333333%;
+  }
+
+  .lg\:px-48{
+    padding-left: 12rem;
+    padding-right: 12rem;
+  }
+}
+
+@media (min-width: 1280px){
+  .xl\:gap-10{
+    gap: 2.5rem;
+  }
+
+  .xl\:px-80{
+    padding-left: 20rem;
+    padding-right: 20rem;
+  }
+
+  .xl\:px-72{
+    padding-left: 18rem;
+    padding-right: 18rem;
+  }
+
+  .xl\:text-7xl{
     font-size: 4.5rem;
     line-height: 1;
   }
 
-  .lg\:text-3xl{
+  .xl\:text-3xl{
     font-size: 1.875rem;
     line-height: 2.25rem;
+  }
+}
+
+@media (min-width: 1536px){
+  .\32xl\:w-1\/4{
+    width: 25%;
+  }
+
+  .\32xl\:px-\[23rem\]{
+    padding-left: 23rem;
+    padding-right: 23rem;
+  }
+
+  .\32xl\:px-96{
+    padding-left: 24rem;
+    padding-right: 24rem;
   }
 }

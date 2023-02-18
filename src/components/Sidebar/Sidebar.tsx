@@ -7,15 +7,15 @@ export default function Sidebar() {
   const { theme }: any = useContext(ThemeContext);
 
   const urls = [
-    { url: "/", name: "Home" },
+    { url: "/", name: "Intro" },
     { url: "/resume", name: "Resume" },
-    { url: "/project", name: "Projects" },
+    { url: "/projects", name: "Projects" },
     { url: "/blog", name: "Blog" },
     { url: "/contact", name: "Contact" },
   ];
 
   return (
-    <div className="flex flex-col items-center justify-between fixed h-screen w-72 top-0 right-0 p-10 bg-layer-light-50 dark:bg-layer-dark-900 border-l border-layer-light-100 dark:border-layer-dark-800 shadow-lg animate__animated animate__fadeInRight animate__faster">
+    <div className="flex flex-col items-center justify-between fixed h-screen w-1/2 lg:w-1/3 2xl:w-1/4 top-0 right-0 p-10 bg-layer-light-50 dark:bg-layer-dark-900  border-l border-layer-light-100 dark:border-layer-dark-700 shadow-lg animate__animated animate__fadeInRight animate__faster">
       <img
         className="w-28 h-28"
         src={`/svg/gokhangunduz-${theme === "light" ? "dark" : "light"}.svg`}

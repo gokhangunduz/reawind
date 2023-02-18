@@ -1,19 +1,19 @@
 import React, { ReactElement } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import PublicLayout from "../layouts/PublicLayout";
-import Home from "../pages/public/Home";
-import Blog from "../pages/public/Blog";
-import Contact from "../pages/public/Contact";
-import Projects from "../pages/public/Projects";
-import Resume from "../pages/public/Resume";
-import Post from "../pages/public/Post";
+import Intro from "../pages/Intro/Intro";
+import Blog from "../pages/Blog/Blog";
+import Contact from "../pages/Contact/Contact";
+import Projects from "../pages/Projects/Projects";
+import Resume from "../pages/Resume/Resume";
+import Post from "../pages/Blog/Post/Post";
 
 export default function AppRoutes(): ReactElement {
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<PublicLayout />}>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Intro />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/blog" element={<Blog />} />
