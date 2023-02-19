@@ -26,13 +26,9 @@ export default function Contact(): React.ReactElement {
     },
   });
 
-  useEffect(() => {
-    console.log(formik.values);
-  }, [formik.values]);
-
   return (
-    <div className="flex flex-col gap-6">
-      <div className="grid grid-cols-2 gap-6">
+    <div className="flex flex-col gap-7">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
         <div className="col-span-1">
           <InputText
             placeholder="First Name"
@@ -54,23 +50,28 @@ export default function Contact(): React.ReactElement {
           />
         </div>
       </div>
-      <div>
-        <InputText
-          placeholder="Email"
-          type="email"
-          {...formik.getFieldProps("email")}
-        />
-        <InputError
-          touched={formik.touched.email}
-          error={formik.errors.email}
-        />
-      </div>
-      <div>
-        <InputText placeholder="Subject" {...formik.getFieldProps("subject")} />
-        <InputError
-          touched={formik.touched.subject}
-          error={formik.errors.subject}
-        />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+        <div className="col-span-1">
+          <InputText
+            placeholder="Subject"
+            {...formik.getFieldProps("subject")}
+          />
+          <InputError
+            touched={formik.touched.subject}
+            error={formik.errors.subject}
+          />
+        </div>
+        <div className="col-span-1">
+          <InputText
+            placeholder="Email"
+            type="email"
+            {...formik.getFieldProps("email")}
+          />
+          <InputError
+            touched={formik.touched.email}
+            error={formik.errors.email}
+          />
+        </div>
       </div>
       <div>
         <InputTextarea
@@ -82,7 +83,7 @@ export default function Contact(): React.ReactElement {
           error={formik.errors.message}
         />
       </div>
-      <div>
+      <div style={{ width: "fit-content" }}>
         <Reaptcha
           theme={theme}
           sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
@@ -93,13 +94,14 @@ export default function Contact(): React.ReactElement {
             formik.setFieldValue("verify", false);
           }}
         />
-        <InputError
-          touched={formik.touched.verify}
-          error={formik.errors.verify}
-        />
+        <InputError touched={true} error={formik.errors.verify} />
       </div>
       <div>
-        <Button label="Send Message" />
+        <Button
+          {...formik.getFieldProps("submit")}
+          label="Send Message"
+          disabled={!formik.isValid}
+        />
       </div>
     </div>
   );
