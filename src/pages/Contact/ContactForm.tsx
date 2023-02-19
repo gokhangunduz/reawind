@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { ReactElement, useContext, useRef } from "react";
 import InputTextarea from "../../components/InputTextarea/InputTextarea";
 import InputText from "../../components/InputText/InputText";
 import { useFormik } from "formik";
@@ -8,8 +8,10 @@ import { ThemeContext } from "../../contexts/ThemeContext";
 import { contactFormSchema } from "../../validations/ValidationSchemas";
 import InputError from "../../components/InputError/InputError";
 
-export default function Contact(): React.ReactElement {
+export default function Contact(): ReactElement {
   const { theme }: any = useContext(ThemeContext);
+
+  const recaptcha = useRef<Reaptcha>(null);
 
   const formik = useFormik({
     initialValues: {
@@ -22,16 +24,23 @@ export default function Contact(): React.ReactElement {
     },
     validationSchema: contactFormSchema,
     onSubmit: (values: any) => {
+      formik.setSubmitting(true);
       console.log(values);
+      setTimeout(() => {
+        formik.resetForm();
+        recaptcha.current?.reset();
+        formik.setSubmitting(false);
+      }, 3000);
     },
   });
 
   return (
-    <div className="flex flex-col gap-7">
+    <form onSubmit={formik.handleSubmit} className="flex flex-col gap-7">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
         <div className="col-span-1">
           <InputText
             placeholder="First Name"
+            disabled={formik.isSubmitting}
             {...formik.getFieldProps("firstName")}
           />
           <InputError
@@ -42,6 +51,7 @@ export default function Contact(): React.ReactElement {
         <div className="col-span-1">
           <InputText
             placeholder="Last Name"
+            disabled={formik.isSubmitting}
             {...formik.getFieldProps("lastName")}
           />
           <InputError
@@ -54,6 +64,7 @@ export default function Contact(): React.ReactElement {
         <div className="col-span-1">
           <InputText
             placeholder="Subject"
+            disabled={formik.isSubmitting}
             {...formik.getFieldProps("subject")}
           />
           <InputError
@@ -65,6 +76,7 @@ export default function Contact(): React.ReactElement {
           <InputText
             placeholder="Email"
             type="email"
+            disabled={formik.isSubmitting}
             {...formik.getFieldProps("email")}
           />
           <InputError
@@ -76,6 +88,7 @@ export default function Contact(): React.ReactElement {
       <div>
         <InputTextarea
           placeholder="Message"
+          disabled={formik.isSubmitting}
           {...formik.getFieldProps("message")}
         />
         <InputError
@@ -85,6 +98,7 @@ export default function Contact(): React.ReactElement {
       </div>
       <div style={{ width: "fit-content" }}>
         <Reaptcha
+          ref={recaptcha}
           theme={theme}
           sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
           onVerify={() => {
@@ -94,15 +108,17 @@ export default function Contact(): React.ReactElement {
             formik.setFieldValue("verify", false);
           }}
         />
+
         <InputError touched={true} error={formik.errors.verify} />
       </div>
       <div>
         <Button
           {...formik.getFieldProps("submit")}
           label="Send Message"
+          loading={formik.isSubmitting}
           disabled={!formik.isValid}
         />
       </div>
-    </div>
+    </form>
   );
 }
