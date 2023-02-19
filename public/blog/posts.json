@@ -1,38 +1,14 @@
 [
   {
-    "file": "test.md",
     "name": "test",
-    "description": "test",
+    "title": "Test Test",
+    "description": "Test description",
     "date": "2023-01-01"
   },
   {
-    "file": "test.md",
-    "name": "test",
-    "description": "test",
-    "date": "2023-01-01"
-  },
-  {
-    "file": "test.md",
-    "name": "test",
-    "description": "test",
-    "date": "2023-01-01"
-  },
-  {
-    "file": "test.md",
-    "name": "test",
-    "description": "test",
-    "date": "2023-01-01"
-  },
-  {
-    "file": "test.md",
-    "name": "test",
-    "description": "test",
-    "date": "2023-01-01"
-  },
-  {
-    "file": "test.md",
-    "name": "test",
-    "description": "test",
+    "name": "how-to-work",
+    "title": "How to Work",
+    "description": "How to Work description",
     "date": "2023-01-01"
   }
 ]

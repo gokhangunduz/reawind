@@ -2,18 +2,18 @@ import React, { ReactElement, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import MarkdownPreview from "@uiw/react-markdown-preview";
 import axios from "axios";
-import Banner from "../../../components/Banner/Banner";
+import Banner from "../../components/Banner/Banner";
 
-export default function Post(): ReactElement {
+export default function Project(): ReactElement {
   const url = useParams();
-  const [post, setPost] = useState<string>("");
+  const [project, setProject] = useState<string>("");
   const navigate = useNavigate();
 
   useEffect(() => {
     axios
-      .get(`/blog/post/${url?.post}.md`)
+      .get(`/project/work/${url?.project}.md`)
       .then(function (response) {
-        setPost(response.data);
+        setProject(response.data);
       })
       .catch(function (error) {
         navigate("/");
@@ -22,9 +22,9 @@ export default function Post(): ReactElement {
 
   return (
     <div className="animate__animated animate__zoomIn">
-      <Banner url={`/blog/image/${url?.post}.png`} />
+      <Banner url={`/project/image/${url?.project}.png`} />
       <MarkdownPreview
-        source={post}
+        source={project}
         style={{ backgroundColor: "transparent" }}
         className="transition-all duration-500"
       />

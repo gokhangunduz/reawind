@@ -25,10 +25,10 @@ export default function Blog(): ReactElement {
               <img
                 className="rounded-lg"
                 src={`/blog/image/${post.name}.png`}
-                alt={post.name}
+                alt={post.title}
               />
               <div className="absolute flex flex-col gap-2 items-center bottom-5 left-1/2 transform -translate-x-1/2">
-                <span className="text-sm font-medium">{post.name}</span>
+                <span className="text-sm font-medium">{post.title}</span>
 
                 <span className="text-xs font-light">{post.date}</span>
               </div>
