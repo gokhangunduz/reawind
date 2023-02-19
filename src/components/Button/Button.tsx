@@ -45,7 +45,7 @@ export default function Button({
         `}
     >
       {loading ? (
-        <div className="flex justify-center items-center gap-4">
+        <div className="flex justify-center items-center gap-4 transition-all duration-500">
           <AiOutlineLoading3Quarters size={20} className="animate-spin" />
           Processing...
         </div>
