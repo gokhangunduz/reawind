@@ -22,7 +22,7 @@ export default function Contact(): ReactElement {
     },
     {
       title: "Address",
-      url: "https://goo.gl/maps/4Z5Z9Z9Z9Z9Z9Z9Z9",
+      url: "https://www.google.com.tr/maps/place/Ankara/",
       label: "Ankara, Turkey",
       icon: <MdLocationPin size={42} />,
     },
