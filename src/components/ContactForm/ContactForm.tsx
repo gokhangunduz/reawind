@@ -39,21 +39,14 @@ export default function Contact(): ReactElement {
   });
 
   const sendEmail = (e: any) => {
-    emailjs
-      .sendForm(
-        "service_molneph",
-        "template_ywbq3vk",
-        form.current,
-        "DzHNT40UoTYmrouj3"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
+    emailjs.sendForm("SERVICE_ID", "TEMPLATE_ID", form.current, "KEY").then(
+      (result) => {
+        console.log(result.text);
+      },
+      (error) => {
+        console.log(error.text);
+      }
+    );
   };
 
   return (
