@@ -17,7 +17,7 @@ export default function AppRoutes(): ReactElement {
           <Route path="/" element={<Intro />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/projects" element={<Projects />} />
-          <Route path="/projects/:project" element={<Project />} />
+          <Route path="/project/:project" element={<Project />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:post" element={<Post />} />
           <Route path="/contact" element={<Contact />} />

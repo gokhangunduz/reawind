@@ -7,11 +7,12 @@ import Reaptcha from "reaptcha";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { contactFormSchema } from "../../validations/ValidationSchemas";
 import InputError from "../InputError/InputError";
+import emailjs from "@emailjs/browser";
 
 export default function Contact(): ReactElement {
   const { theme }: any = useContext(ThemeContext);
-
   const recaptcha = useRef<Reaptcha>(null);
+  const form = useRef<any>();
 
   const formik = useFormik({
     initialValues: {
@@ -27,6 +28,9 @@ export default function Contact(): ReactElement {
       formik.setSubmitting(true);
       console.log(values);
       setTimeout(() => {
+        sendEmail({
+          message: values,
+        });
         formik.resetForm();
         recaptcha.current?.reset();
         formik.setSubmitting(false);
@@ -34,8 +38,27 @@ export default function Contact(): ReactElement {
     },
   });
 
+  const sendEmail = (e: any) => {
+    emailjs
+      .sendForm(
+        "service_molneph",
+        "template_ywbq3vk",
+        form.current,
+        "DzHNT40UoTYmrouj3"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
+
   return (
     <form
+      ref={form}
       onSubmit={formik.handleSubmit}
       className="grid grid-cols-1 md:grid-cols-2 gap-7"
     >

@@ -11,7 +11,7 @@ export default function Project(): ReactElement {
 
   useEffect(() => {
     axios
-      .get(`/project/work/${url?.project}.md`)
+      .get(`/data/project/work/${url?.project}.md`)
       .then(function (response) {
         setProject(response.data);
       })
@@ -22,7 +22,7 @@ export default function Project(): ReactElement {
 
   return (
     <div className="animate__animated animate__zoomIn">
-      <Banner url={`/project/image/${url?.project}.png`} />
+      <Banner url={`/data/project/image/${url?.project}.png`} />
       <MarkdownPreview
         source={project}
         style={{ backgroundColor: "transparent" }}

@@ -6,7 +6,7 @@ import ContactInfo from "../../components/ContactInfo/ContactInfo";
 export default function Contact(): ReactElement {
   return (
     <div className="animate__animated animate__zoomIn">
-      <PageHeader title="Contact" subtitle="Gökhan Gündüz" />
+      <PageHeader title="Contact" />
       <div className="grid grid-cols-1 2xl:grid-cols-2 gap-10 md:gap-20">
         <div className="col-span-1">
           <ContactInfo />

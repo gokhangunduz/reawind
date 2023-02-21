@@ -8,10 +8,9 @@ export default function Post(): ReactElement {
   const url = useParams();
   const [post, setPost] = useState<string>("");
   const navigate = useNavigate();
-
   useEffect(() => {
     axios
-      .get(`/blog/post/${url?.post}.md`)
+      .get(`/data/blog/post/${url?.post}.md`)
       .then(function (response) {
         setPost(response.data);
       })
@@ -22,7 +21,7 @@ export default function Post(): ReactElement {
 
   return (
     <div className="animate__animated animate__zoomIn">
-      <Banner url={`/blog/image/${url?.post}.png`} />
+      <Banner url={`/data/blog/image/${url?.post}.png`} />
       <MarkdownPreview
         source={post}
         style={{ backgroundColor: "transparent" }}
