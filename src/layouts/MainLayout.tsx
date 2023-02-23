@@ -12,8 +12,6 @@ import { SidebarContext } from "../contexts/SidebarContext";
 import Sidebar from "../components/Sidebar/Sidebar";
 import LoadingBar from "react-top-loading-bar";
 import { ThemeContext } from "../contexts/ThemeContext";
-// @ts-ignore
-import ReactCursorEffect from "react-dancing-lines";
 
 export default function MainLayout(): ReactElement {
   const { isOpen, setIsOpen }: any = useContext(SidebarContext);
@@ -36,9 +34,6 @@ export default function MainLayout(): ReactElement {
 
   return (
     <Fragment>
-      {theme === "dark" && (
-        <ReactCursorEffect backgroundColor={"rgba(0, 0, 0, 1)"} />
-      )}
       <div
         className={`${isOpen && "cursor-pointer"}`}
         onClick={() => isOpen && handleSidebar()}
