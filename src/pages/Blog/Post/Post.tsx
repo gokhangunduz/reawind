@@ -10,7 +10,7 @@ export default function Post(): ReactElement {
   const navigate = useNavigate();
   useEffect(() => {
     axios
-      .get(`/data/blog/post/${url?.post}.md`)
+      .get(`/data/blog/markdown/${url?.post}.md`)
       .then(function (response) {
         setPost(response.data);
       })

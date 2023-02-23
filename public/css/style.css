@@ -10,10 +10,6 @@ code{
   transition-duration: 500ms;
 }
 
-img{
-  display: inline-block !important;
-}
-
 /*
 ! tailwindcss v3.2.7 | MIT License | https://tailwindcss.com
 */
@@ -607,10 +603,6 @@ video {
   grid-column: span 1 / span 1;
 }
 
-.block{
-  display: block;
-}
-
 .flex{
   display: flex;
 }
@@ -655,6 +647,10 @@ video {
   height: 100vh;
 }
 
+.h-10{
+  height: 2.5rem;
+}
+
 .min-h-\[6rem\]{
   min-height: 6rem;
 }
@@ -669,6 +665,14 @@ video {
 
 .w-full{
   width: 100%;
+}
+
+.w-6{
+  width: 1.5rem;
+}
+
+.w-8{
+  width: 2rem;
 }
 
 .-translate-x-1\/2{
@@ -762,12 +766,20 @@ video {
   border-radius: 0.25rem;
 }
 
+.rounded-3xl{
+  border-radius: 1.5rem;
+}
+
 .rounded-lg{
   border-radius: 0.5rem;
 }
 
 .rounded-md{
   border-radius: 0.375rem;
+}
+
+.rounded-xl{
+  border-radius: 0.75rem;
 }
 
 .border{
@@ -795,6 +807,11 @@ video {
 .border-layer-light-600{
   --tw-border-opacity: 1;
   border-color: rgb(133 133 133 / var(--tw-border-opacity));
+}
+
+.border-layer-light-300{
+  --tw-border-opacity: 1;
+  border-color: rgb(194 194 194 / var(--tw-border-opacity));
 }
 
 .bg-layer-light-50{

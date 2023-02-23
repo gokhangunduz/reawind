@@ -1,4 +1,4 @@
-import React, { ReactElement, useContext, useRef } from "react";
+import React, { ReactElement, useContext, useEffect, useRef } from "react";
 import InputTextarea from "../InputTextarea/InputTextarea";
 import InputText from "../InputText/InputText";
 import { useFormik } from "formik";
@@ -8,6 +8,7 @@ import { ThemeContext } from "../../contexts/ThemeContext";
 import { contactFormSchema } from "../../validations/ValidationSchemas";
 import InputError from "../InputError/InputError";
 import emailjs from "@emailjs/browser";
+import { toast } from "sonner";
 
 export default function Contact(): ReactElement {
   const { theme }: any = useContext(ThemeContext);
@@ -42,9 +43,15 @@ export default function Contact(): ReactElement {
     emailjs.sendForm("SERVICE_ID", "TEMPLATE_ID", form.current, "KEY").then(
       (result) => {
         console.log(result.text);
+        toast("Information Notification", {
+          description: "Your message has been sent successfully!",
+        });
       },
       (error) => {
         console.log(error.text);
+        toast("Information Notification", {
+          description: "Your message has not been sent!",
+        });
       }
     );
   };

@@ -3,6 +3,7 @@ import PageHeader from "../../components/PageHeader/PageHeader";
 import MarkdownPreview from "@uiw/react-markdown-preview";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import config from "../../templates/config.json";
 
 export default function Resume(): ReactElement {
   const [resume, setResume] = useState<string>("");
@@ -11,7 +12,7 @@ export default function Resume(): ReactElement {
   useEffect(() => {
     axios
       .get(
-        `https://raw.githubusercontent.com/gokhangunduz/gokhangunduz/main/README.md`
+        `https://raw.githubusercontent.com/${config.resume.githubUsername}/${config.resume.githubReadMeRepo}/${config.resume.githubReadMeRepoBranch}/README.md`
       )
       .then(function (response) {
         setResume(response.data);

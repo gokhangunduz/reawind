@@ -2,18 +2,13 @@ import React, { ReactElement } from "react";
 import { Link } from "react-router-dom";
 
 interface GridItemProps {
-  key: number;
   item: any;
   type: string;
 }
 
-export default function GridItem({
-  key,
-  item,
-  type,
-}: GridItemProps): ReactElement {
+export default function GridItem({ item, type }: GridItemProps): ReactElement {
   return (
-    <Link key={key} to={`/${type}/${item.name}`}>
+    <Link to={`/${type}/${item.name}`}>
       <div className="relative col-span-1 border border-layer-light-600 dark:border-layer-dark-700 shadow-lg rounded-lg hover:scale-105 transition-all duration-500">
         <img
           className="rounded-lg"

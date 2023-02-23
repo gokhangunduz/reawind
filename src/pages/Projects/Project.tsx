@@ -11,7 +11,7 @@ export default function Project(): ReactElement {
 
   useEffect(() => {
     axios
-      .get(`/data/project/work/${url?.project}.md`)
+      .get(`/data/project/markdown/${url?.project}.md`)
       .then(function (response) {
         setProject(response.data);
       })

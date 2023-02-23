@@ -8,10 +8,6 @@ code {
   @apply transition-all duration-500;
 }
 
-img {
-  @apply !inline-block;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
