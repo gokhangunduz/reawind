@@ -1,5 +1,4 @@
 import React, { ReactElement } from "react";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 interface ButtonProps {
   name?: string;
@@ -45,10 +44,7 @@ export default function Button({
         `}
     >
       {loading ? (
-        <div className="flex justify-center items-center gap-4 transition-all duration-500">
-          <AiOutlineLoading3Quarters size={20} className="animate-spin" />
-          Processing...
-        </div>
+        <div className="transition-all duration-500">Processing...</div>
       ) : (
         label
       )}

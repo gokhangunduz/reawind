@@ -34,7 +34,7 @@ export default function Contact(): ReactElement {
         formik.resetForm();
         recaptcha.current?.reset();
         formik.setSubmitting(false);
-      }, 5000);
+      }, 1000);
     },
   });
 
@@ -54,13 +54,11 @@ export default function Contact(): ReactElement {
       )
       .then(
         (result) => {
-          console.log(result.text);
           toast("Information Notification", {
             description: "Your message has been sent successfully!",
           });
         },
         (error) => {
-          console.log(error.text);
           toast("Information Notification", {
             description: "Your message has not been sent!",
           });
