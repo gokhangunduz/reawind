@@ -4,7 +4,6 @@ import MarkdownPreview from "@uiw/react-markdown-preview";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { info, pages } from "../../templates/template";
-import { Helmet } from "react-helmet";
 import ReactHelmet from "../../helper/ReactHelmet";
 
 export default function Resume(): ReactElement {

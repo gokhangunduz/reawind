@@ -1,4 +1,4 @@
-import React, { ReactElement, useContext, useRef } from "react";
+import React, { ReactElement, useContext, useEffect, useRef } from "react";
 import InputTextarea from "../InputTextarea/InputTextarea";
 import InputText from "../InputText/InputText";
 import { useFormik } from "formik";
@@ -13,7 +13,6 @@ import { toast } from "sonner";
 export default function Contact(): ReactElement {
   const { theme }: any = useContext(ThemeContext);
   const recaptcha = useRef<Reaptcha>(null);
-  const form = useRef<any>();
 
   const formik = useFormik({
     initialValues: {
@@ -35,30 +34,42 @@ export default function Contact(): ReactElement {
         formik.resetForm();
         recaptcha.current?.reset();
         formik.setSubmitting(false);
-      }, 3000);
+      }, 5000);
     },
   });
 
   const sendEmail = (e: any) => {
-    emailjs.sendForm("SERVICE_ID", "TEMPLATE_ID", form.current, "KEY").then(
-      (result) => {
-        console.log(result.text);
-        toast("Information Notification", {
-          description: "Your message has been sent successfully!",
-        });
-      },
-      (error) => {
-        console.log(error.text);
-        toast("Information Notification", {
-          description: "Your message has not been sent!",
-        });
-      }
-    );
+    emailjs
+      .send(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID!,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID!,
+        {
+          firstName: formik.values.firstName,
+          lastName: formik.values.lastName,
+          email: formik.values.email,
+          subject: formik.values.subject,
+          message: formik.values.message,
+        },
+        process.env.REACT_APP_EMAILJS_PUBLIC_KEY!
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          toast("Information Notification", {
+            description: "Your message has been sent successfully!",
+          });
+        },
+        (error) => {
+          console.log(error.text);
+          toast("Information Notification", {
+            description: "Your message has not been sent!",
+          });
+        }
+      );
   };
 
   return (
     <form
-      ref={form}
       onSubmit={formik.handleSubmit}
       className="grid grid-cols-1 md:grid-cols-2 gap-7"
     >
