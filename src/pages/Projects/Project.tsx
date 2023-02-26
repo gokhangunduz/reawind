@@ -42,7 +42,7 @@ export default function Project(): ReactElement {
         ogUrl={window.location.href}
         ogType="website"
         ogSiteName={info.fullName}
-        ogLocale="en_US"
+        ogLocale={info.locale}
         articleAuthor={info.fullName}
         articleSection={getProject().title}
         articleTag={getProject().seo.keywords}

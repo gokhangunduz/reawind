@@ -5,6 +5,7 @@ export const info = {
   address: "Ankara, Türkiye",
   phone: "+90 555 555 55 55",
   year: 2023,
+  locale: "en_US",
 };
 
 export const urls = {

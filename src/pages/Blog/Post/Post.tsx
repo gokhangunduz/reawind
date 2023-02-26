@@ -42,7 +42,7 @@ export default function Post(): ReactElement {
         ogUrl={window.location.href}
         ogType="website"
         ogSiteName={info.fullName}
-        ogLocale="en_US"
+        ogLocale={info.locale}
         articleAuthor={info.fullName}
         articleSection={getPost().title}
         articleTag={getPost().seo.keywords}
