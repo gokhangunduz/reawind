@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { MdOutlineAlternateEmail } from "react-icons/md";
-import config from "../../templates/config.json";
+import { urls } from "../../templates/template";
 
 export default function FooterItems(): ReactElement {
   const itemClassName =
@@ -10,17 +10,17 @@ export default function FooterItems(): ReactElement {
   const items = [
     {
       name: "LinkedIn",
-      url: config.urls.linkedin,
+      url: urls.linkedin,
       icon: <FaLinkedin className={`text-[1.75rem] ${itemClassName}`} />,
     },
     {
       name: "GitHub",
-      url: config.urls.github,
+      url: urls.github,
       icon: <FaGithub className={`text-[1.75rem] ${itemClassName}`} />,
     },
     {
       name: "Email",
-      url: config.urls.email,
+      url: urls.email,
       icon: (
         <MdOutlineAlternateEmail
           className={`text-[1.90rem] ${itemClassName}`}

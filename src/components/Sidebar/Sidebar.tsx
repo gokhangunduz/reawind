@@ -3,7 +3,7 @@ import { ReactElement, useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import packageJSON from "../../../package.json";
 import FooterItems from "../FooterItems/FooterItems";
-import config from "../../templates/config.json";
+import { info } from "../../templates/template";
 
 export default function Sidebar(): ReactElement {
   const { theme }: any = useContext(ThemeContext);
@@ -40,7 +40,7 @@ export default function Sidebar(): ReactElement {
       <div className="flex flex-col items-center gap-4">
         <FooterItems />
         <span className="text-xs font-light text-layer-dark-900 dark:text-layer-light-50 transition-all duration-500">
-          {config.year} • {config.fullName}
+          {info.year} • {info.fullName}
         </span>
         <span className="text-xs font-light text-layer-dark-900 dark:text-layer-light-50 transition-all duration-500">
           {packageJSON.version + "v"} {process.env.NODE_ENV}

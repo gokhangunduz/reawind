@@ -5,31 +5,31 @@ import {
   MdLocationPin,
   MdWork,
 } from "react-icons/md";
-import config from "../../templates/config.json";
+import { info, urls } from "../../templates/template";
 
 export default function Contact(): ReactElement {
   const items = [
     {
       title: "Email",
-      url: config.urls.email,
-      label: config.email,
+      url: urls.email,
+      label: info.email,
       icon: <MdAlternateEmail size={42} />,
     },
     {
       title: "Phone",
-      url: config.urls.phone,
-      label: config.phone,
+      url: urls.phone,
+      label: info.phone,
       icon: <MdLocalPhone size={42} />,
     },
     {
       title: "Address",
-      url: config.urls.address,
-      label: config.address,
+      url: urls.address,
+      label: info.address,
       icon: <MdLocationPin size={42} />,
     },
     {
       title: "Freelance",
-      url: config.urls.email,
+      url: urls.email,
       label: "Freelance Available",
       icon: <MdWork size={42} />,
     },

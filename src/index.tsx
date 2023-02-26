@@ -8,11 +8,9 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <SidebarProvider>
-      <ThemeProvider>
-        <App />
-      </ThemeProvider>
-    </SidebarProvider>
-  </React.StrictMode>
+  <SidebarProvider>
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
+  </SidebarProvider>
 );

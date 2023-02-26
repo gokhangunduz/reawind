@@ -1,4 +1,4 @@
-import React, { ReactElement, useContext, useEffect, useRef } from "react";
+import React, { ReactElement, useContext, useRef } from "react";
 import InputTextarea from "../InputTextarea/InputTextarea";
 import InputText from "../InputText/InputText";
 import { useFormik } from "formik";

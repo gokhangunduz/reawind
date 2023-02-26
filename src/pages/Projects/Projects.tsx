@@ -1,24 +1,34 @@
-import React, { Fragment, ReactElement, useEffect, useState } from "react";
-import axios from "axios";
-import ListLayout from "../../layouts/ListLayout";
+import React, { Fragment, ReactElement } from "react";
 import GridItem from "../../components/GridItem/GridItem";
+import ListLayout from "../../layouts/ListLayout";
+import { projects } from "../../templates/projects";
+import { info, pages } from "../../templates/template";
+import ReactHelmet from "../../helper/ReactHelmet";
 
 export default function Projects(): ReactElement {
-  const [projects, setProjects] = useState([]);
-
-  useEffect(() => {
-    axios(`/data/project/projects.json`).then((res) => {
-      setProjects(res.data || []);
-    });
-  }, []);
-
   return (
-    <ListLayout pageHeaderTitle="Projects">
-      <Fragment>
-        {projects?.map((project: any, index: number) => (
-          <GridItem key={index} type="project" item={project} />
-        ))}
-      </Fragment>
-    </ListLayout>
+    <Fragment>
+      <ReactHelmet
+        title={pages.projects.seo.title}
+        description={pages.projects.seo.description}
+        keywords={pages.projects.seo.keywords}
+        author={info.fullName}
+        contact={info.email}
+        copyright={info.fullName}
+      />
+      <ListLayout pageHeaderTitle="Project">
+        <Fragment>
+          {projects?.map((project: any, index: number) => (
+            <GridItem
+              key={index}
+              type="project"
+              url={project.url}
+              title={project.title}
+              imageFileName={project.imageFileName}
+            />
+          ))}
+        </Fragment>
+      </ListLayout>
+    </Fragment>
   );
 }
