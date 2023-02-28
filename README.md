@@ -34,7 +34,7 @@ Run the following command to start the project
 npm start
 ```
 
-## Contrubite
+## Contribute
 
 reawind is an open source project and has a repository on GitHub. It is recommended that the project be forked and run on their local machine by developers willing to contribute. They can then create a pull request to push their changes back to the main repository.
 
