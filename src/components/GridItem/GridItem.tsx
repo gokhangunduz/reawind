@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react";
 import { Link } from "react-router-dom";
 
-interface GridItemProps {
+interface IGridItem {
   url: string;
   type: string;
   title: string;
@@ -13,7 +13,7 @@ export default function GridItem({
   type,
   title,
   imageFileName,
-}: GridItemProps): ReactElement {
+}: IGridItem): ReactElement {
   return (
     <Link to={`/${type}/${url}`}>
       <div className="relative col-span-1 border border-layer-light-600 dark:border-layer-dark-700 shadow-lg rounded-lg hover:scale-105 transition-all duration-500">

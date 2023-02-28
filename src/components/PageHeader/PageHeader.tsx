@@ -1,12 +1,10 @@
 import React from "react";
 import { info } from "../../templates/template";
-interface PageHeaderProps {
+interface IPageHeader {
   title: string;
 }
 
-export default function PageHeader({
-  title,
-}: PageHeaderProps): React.ReactElement {
+export default function PageHeader({ title }: IPageHeader): React.ReactElement {
   return (
     <div className="flex flex-col gap-4 justify-center items-center h-64 text-layer-dark-900 dark:text-layer-light-50 select-none text-center transition-all duration-500">
       <span className="text-2xl sm:text-5xl font-semibold ">{title}</span>

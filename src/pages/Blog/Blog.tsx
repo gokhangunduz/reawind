@@ -3,7 +3,7 @@ import GridItem from "../../components/GridItem/GridItem";
 import ListLayout from "../../layouts/ListLayout";
 import { posts } from "../../templates/posts";
 import { info, pages } from "../../templates/template";
-import ReactHelmet from "../../helper/ReactHelmet";
+import ReactHelmet from "../../helper/ReactHelmet/ReactHelmet";
 
 export default function Blog(): ReactElement {
   return (

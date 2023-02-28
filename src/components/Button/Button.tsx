@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 
-interface ButtonProps {
+interface IButton {
   name?: string;
   label?: string;
   type?: "button" | "submit" | "reset";
@@ -14,7 +14,7 @@ export default function Button({
   type,
   loading,
   disabled,
-}: ButtonProps): ReactElement {
+}: IButton): ReactElement {
   const buttonClassList = {
     buttonClassNames:
       "w-full font-semibold py-3 shadow rounded-md transition duration-500",

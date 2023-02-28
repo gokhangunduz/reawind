@@ -2,7 +2,7 @@ import React, { Fragment, ReactElement, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import MarkdownPreview from "@uiw/react-markdown-preview";
 import Banner from "../../../components/Banner/Banner";
-import ReactHelmet from "../../../helper/ReactHelmet";
+import ReactHelmet from "../../../helper/ReactHelmet/ReactHelmet";
 import { info } from "../../../templates/template";
 import { posts } from "../../../templates/posts";
 import axios from "axios";

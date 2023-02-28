@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react";
 import PageHeader from "../components/PageHeader/PageHeader";
 
-interface ListLayoutProps {
+interface IListLayout {
   children: ReactElement;
   pageHeaderTitle: string;
 }
@@ -9,7 +9,7 @@ interface ListLayoutProps {
 export default function ListLayout({
   children,
   pageHeaderTitle,
-}: ListLayoutProps): ReactElement {
+}: IListLayout): ReactElement {
   return (
     <div className="animate__animated animate__zoomIn">
       <PageHeader title={pageHeaderTitle} />

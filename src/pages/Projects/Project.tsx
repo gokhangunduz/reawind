@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import MarkdownPreview from "@uiw/react-markdown-preview";
 import Banner from "../../components/Banner/Banner";
 import { projects } from "../../templates/projects";
-import ReactHelmet from "../../helper/ReactHelmet";
+import ReactHelmet from "../../helper/ReactHelmet/ReactHelmet";
 import { info } from "../../templates/template";
 import axios from "axios";
 

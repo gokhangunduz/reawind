@@ -1,6 +1,6 @@
 import React from "react";
 
-interface InputTextProps {
+interface IInputText {
   placeholder?: string;
   type?: "text" | "email" | "password";
   name?: string;
@@ -18,7 +18,7 @@ export default function InputText({
   disabled,
   onChange,
   onBlur,
-}: InputTextProps) {
+}: IInputText) {
   const inputClassList = {
     inputClassNames:
       "w-full h-11 p-4 outline-none bg-transparent rounded-md transition-all duration-500",

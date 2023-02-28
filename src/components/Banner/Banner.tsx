@@ -1,10 +1,10 @@
 import React, { ReactElement } from "react";
 
-interface BannerProps {
+interface IBanner {
   url?: string;
 }
 
-export default function Banner({ url }: BannerProps): ReactElement {
+export default function Banner({ url }: IBanner): ReactElement {
   return (
     <div className="flex items-center justify-center py-14">
       <img

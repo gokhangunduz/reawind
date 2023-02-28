@@ -1,6 +1,6 @@
 export const info = {
-  fullName: "John Doe",
-  title: "Frontend Developer",
+  fullName: "Reawind",
+  title: "Open Source Project",
   email: "name@yourdomain.com",
   address: "Ankara, Türkiye",
   phone: "+90 555 555 55 55",
@@ -36,6 +36,7 @@ export const pages = {
       keywords: "frontend, developer, javascript, typescript, react, nodejs",
     },
   },
+
   projects: {
     seo: {
       title: `${info.fullName} | Projects`,

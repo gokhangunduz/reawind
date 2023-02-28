@@ -4,7 +4,7 @@ import MarkdownPreview from "@uiw/react-markdown-preview";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { info, pages } from "../../templates/template";
-import ReactHelmet from "../../helper/ReactHelmet";
+import ReactHelmet from "../../helper/ReactHelmet/ReactHelmet";
 
 export default function Resume(): ReactElement {
   const [resume, setResume] = useState<string>("");

@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 
-interface InputTextareaProps {
+interface IInputTextarea {
   placeholder?: string;
   name?: string;
   value?: string;
@@ -16,7 +16,7 @@ export default function InputTextarea({
   disabled,
   onChange,
   onBlur,
-}: InputTextareaProps): ReactElement {
+}: IInputTextarea): ReactElement {
   const inputClassList = {
     inputClassNames:
       "w-full h-36 min-h-[6rem] p-4 outline-none bg-transparent rounded-md transition-all duration-500",
