@@ -13,17 +13,17 @@ export default function App(): ReactElement {
   const { width }: any = useWindowDimensions();
 
   useEffect(() => {
-    if (width < 768) {
+    if (width > 768) {
       renderCanvas();
     }
-  }, []);
+  }, [width]);
 
   return (
     <Fragment>
       <Toaster theme={theme} position="bottom-right" />
       <DisableRightClick />
       <AppRoutes />
-      {width < 768 && <Canvas />}
+      {width > 768 && <Canvas />}
     </Fragment>
   );
 }
