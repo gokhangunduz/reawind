@@ -11,17 +11,23 @@ export default function Resume(): ReactElement {
   const navigate = useNavigate();
 
   useEffect(() => {
+    let cancelled = false;
+
     axios
       .get(
         `https://raw.githubusercontent.com/${pages.resume.githubUsername}/${pages.resume.githubReadMeRepository}/${pages.resume.githubReadMeRepositoryBranch}/README.md`
       )
-      .then(function (response) {
-        setResume(response.data);
+      .then((response) => {
+        if (!cancelled) setResume(response.data);
       })
-      .catch(function (error) {
-        navigate("/");
+      .catch(() => {
+        if (!cancelled) navigate("/", { replace: true });
       });
-  });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [navigate]);
 
   return (
     <Fragment>
