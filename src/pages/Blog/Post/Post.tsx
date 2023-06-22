@@ -8,57 +8,68 @@ import { posts } from "../../../templates/posts";
 import axios from "axios";
 
 export default function Post(): ReactElement {
-  const [post, setPost] = useState<string>("");
-  const url = useParams();
+  const [content, setContent] = useState<string>("");
+  const params = useParams();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    axios
-      .get(`/markdown/${getPost().markdownFileName}`)
-      .then(function (response) {
-        setPost(response.data);
-      })
-      .catch(function (error) {
-        navigate("/");
-      });
-  });
+  const post = posts.find((item) => item.url === params.post);
 
-  function getPost() {
-    return posts.filter((post: any) => post?.url === url?.post)[0];
-  }
+  useEffect(() => {
+    if (!post) {
+      navigate("/", { replace: true });
+      return;
+    }
+
+    let cancelled = false;
+
+    axios
+      .get(`/markdown/${post.markdownFileName}`)
+      .then((response) => {
+        if (!cancelled) setContent(response.data);
+      })
+      .catch(() => {
+        if (!cancelled) navigate("/", { replace: true });
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [post, navigate]);
+
+  if (!post) return <Fragment />;
 
   return (
     <Fragment>
       <ReactHelmet
-        title={getPost().title + " | " + info.fullName}
-        description={getPost().seo.description}
-        keywords={getPost().seo.keywords}
+        title={post.title + " | " + info.fullName}
+        description={post.seo.description}
+        keywords={post.seo.keywords}
         author={info.fullName}
         contact={info.email}
         copyright={info.fullName}
-        ogTitle={getPost().title}
-        ogDescription={getPost().seo.description}
-        ogImage={`/image/${getPost().imageFileName}`}
+        ogTitle={post.title}
+        ogDescription={post.seo.description}
+        ogImage={`/image/${post.imageFileName}`}
         ogUrl={window.location.href}
         ogType="website"
         ogSiteName={info.fullName}
         ogLocale={info.locale}
         articleAuthor={info.fullName}
-        articleSection={getPost().title}
-        articleTag={getPost().seo.keywords}
-        articlePublishedTime={getPost().date}
-        articleModifiedTime={getPost().date}
+        articleSection={post.title}
+        articleTag={post.seo.keywords}
+        articlePublishedTime={post.date}
+        articleModifiedTime={post.date}
         twitterSite={info.fullName}
         twitterCreator={info.fullName}
         twitterCard="summary_large_image"
-        twitterTitle={getPost().title}
-        twitterDescription={getPost().seo.description}
-        twitterImage={`/image/${getPost().imageFileName}`}
+        twitterTitle={post.title}
+        twitterDescription={post.seo.description}
+        twitterImage={`/image/${post.imageFileName}`}
       />
       <div className="animate__animated animate__zoomIn">
-        <Banner url={`/image/${getPost().imageFileName}`} />
+        <Banner url={`/image/${post.imageFileName}`} alt={post.title} />
         <MarkdownPreview
-          source={post}
+          source={content}
           style={{ backgroundColor: "transparent" }}
           className="transition-all duration-500"
         />
