@@ -8,57 +8,68 @@ import { info } from "../../templates/template";
 import axios from "axios";
 
 export default function Project(): ReactElement {
-  const [project, setProject] = useState<string>("");
-  const url = useParams();
+  const [content, setContent] = useState<string>("");
+  const params = useParams();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    axios
-      .get(`/markdown/${getProject().markdownFileName}`)
-      .then(function (response) {
-        setProject(response.data);
-      })
-      .catch(function (error) {
-        navigate("/");
-      });
-  });
+  const project = projects.find((item) => item.url === params.project);
 
-  function getProject() {
-    return projects.filter((project: any) => project?.url === url?.project)[0];
-  }
+  useEffect(() => {
+    if (!project) {
+      navigate("/", { replace: true });
+      return;
+    }
+
+    let cancelled = false;
+
+    axios
+      .get(`/markdown/${project.markdownFileName}`)
+      .then((response) => {
+        if (!cancelled) setContent(response.data);
+      })
+      .catch(() => {
+        if (!cancelled) navigate("/", { replace: true });
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [project, navigate]);
+
+  if (!project) return <Fragment />;
 
   return (
     <Fragment>
       <ReactHelmet
-        title={getProject().title + " | " + info.fullName}
-        description={getProject().seo.description}
-        keywords={getProject().seo.keywords}
+        title={project.title + " | " + info.fullName}
+        description={project.seo.description}
+        keywords={project.seo.keywords}
         author={info.fullName}
         contact={info.email}
         copyright={info.fullName}
-        ogTitle={getProject().title}
-        ogDescription={getProject().seo.description}
-        ogImage={`/image/${getProject().imageFileName}`}
+        ogTitle={project.title}
+        ogDescription={project.seo.description}
+        ogImage={`/image/${project.imageFileName}`}
         ogUrl={window.location.href}
         ogType="website"
         ogSiteName={info.fullName}
         ogLocale={info.locale}
         articleAuthor={info.fullName}
-        articleSection={getProject().title}
-        articleTag={getProject().seo.keywords}
-        articlePublishedTime={getProject().date}
-        articleModifiedTime={getProject().date}
+        articleSection={project.title}
+        articleTag={project.seo.keywords}
+        articlePublishedTime={project.date}
+        articleModifiedTime={project.date}
         twitterSite={info.fullName}
         twitterCreator={info.fullName}
         twitterCard="summary_large_image"
-        twitterTitle={getProject().title}
-        twitterDescription={getProject().seo.description}
-        twitterImage={`/image/${getProject().imageFileName}`}
+        twitterTitle={project.title}
+        twitterDescription={project.seo.description}
+        twitterImage={`/image/${project.imageFileName}`}
       />
       <div className="animate__animated animate__zoomIn">
-        <Banner url={`/image/${getProject().imageFileName}`} />
+        <Banner url={`/image/${project.imageFileName}`} alt={project.title} />
         <MarkdownPreview
-          source={project}
+          source={content}
           style={{ backgroundColor: "transparent" }}
           className="transition-all duration-500"
         />
