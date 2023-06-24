@@ -1,4 +1,4 @@
-import React, { ReactElement, useContext, useEffect, useRef } from "react";
+import React, { ReactElement, useContext, useRef } from "react";
 import InputTextarea from "../InputTextarea/InputTextarea";
 import InputText from "../InputText/InputText";
 import { useFormik } from "formik";
@@ -10,7 +10,7 @@ import InputError from "../InputError/InputError";
 import emailjs from "@emailjs/browser";
 import { toast } from "sonner";
 
-export default function Contact(): ReactElement {
+export default function ContactForm(): ReactElement {
   const { theme }: any = useContext(ThemeContext);
   const recaptcha = useRef<Reaptcha>(null);
 
@@ -24,46 +24,53 @@ export default function Contact(): ReactElement {
       verify: false,
     },
     validationSchema: contactFormSchema,
-    onSubmit: (values: any) => {
-      formik.setSubmitting(true);
-      console.log(values);
-      setTimeout(() => {
-        sendEmail({
-          message: values,
-        });
-        formik.resetForm();
+    onSubmit: async (values, helpers) => {
+      const sent = await sendEmail(values);
+
+      if (sent) {
+        helpers.resetForm();
         recaptcha.current?.reset();
-        formik.setSubmitting(false);
-      }, 1000);
+      }
     },
   });
 
-  const sendEmail = (e: any) => {
-    emailjs
-      .send(
-        process.env.REACT_APP_EMAILJS_SERVICE_ID!,
-        process.env.REACT_APP_EMAILJS_TEMPLATE_ID!,
+  const sendEmail = async (
+    values: typeof formik.initialValues
+  ): Promise<boolean> => {
+    const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+    const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      toast("Information Notification", {
+        description: "Contact form is not configured yet!",
+      });
+      return false;
+    }
+
+    try {
+      await emailjs.send(
+        serviceId,
+        templateId,
         {
-          firstName: formik.values.firstName,
-          lastName: formik.values.lastName,
-          email: formik.values.email,
-          subject: formik.values.subject,
-          message: formik.values.message,
+          firstName: values.firstName,
+          lastName: values.lastName,
+          email: values.email,
+          subject: values.subject,
+          message: values.message,
         },
-        process.env.REACT_APP_EMAILJS_PUBLIC_KEY!
-      )
-      .then(
-        (result) => {
-          toast("Information Notification", {
-            description: "Your message has been sent successfully!",
-          });
-        },
-        (error) => {
-          toast("Information Notification", {
-            description: "Your message has not been sent!",
-          });
-        }
+        publicKey
       );
+      toast("Information Notification", {
+        description: "Your message has been sent successfully!",
+      });
+      return true;
+    } catch (error) {
+      toast("Information Notification", {
+        description: "Your message has not been sent!",
+      });
+      return false;
+    }
   };
 
   return (
@@ -146,7 +153,6 @@ export default function Contact(): ReactElement {
       </div>
       <div className="col-span-1 md:col-span-2">
         <Button
-          {...formik.getFieldProps("submit")}
           label="Send Message"
           loading={formik.isSubmitting}
           disabled={!formik.isValid}
