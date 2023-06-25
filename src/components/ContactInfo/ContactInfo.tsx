@@ -7,7 +7,7 @@ import {
 } from "react-icons/md";
 import { info, urls } from "../../templates/template";
 
-export default function Contact(): ReactElement {
+export default function ContactInfo(): ReactElement {
   const items = [
     {
       title: "Email",
@@ -37,7 +37,7 @@ export default function Contact(): ReactElement {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-7 h-full">
-      {items.map((item: any) => (
+      {items.map((item) => (
         <div
           key={item.title}
           className="col-span-1 flex flex-col gap-3 items-center justify-center p-4  text-layer-dark-700 dark:text-layer-light-200  border border-layer-light-200 dark:border-layer-dark-700 shadow rounded"
