@@ -16,11 +16,11 @@ export default function Projects(): ReactElement {
         contact={info.email}
         copyright={info.fullName}
       />
-      <ListLayout pageHeaderTitle="Project">
+      <ListLayout pageHeaderTitle="Projects">
         <Fragment>
-          {projects?.map((project: any, index: number) => (
+          {projects.map((project) => (
             <GridItem
-              key={index}
+              key={project.url}
               type="project"
               url={project.url}
               title={project.title}
