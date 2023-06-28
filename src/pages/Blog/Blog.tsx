@@ -18,9 +18,9 @@ export default function Blog(): ReactElement {
       />
       <ListLayout pageHeaderTitle="Blog">
         <Fragment>
-          {posts?.map((post: any, index: number) => (
+          {posts.map((post) => (
             <GridItem
-              key={index}
+              key={post.url}
               type="blog"
               url={post.url}
               title={post.title}
