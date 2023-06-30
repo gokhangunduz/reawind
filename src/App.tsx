@@ -8,22 +8,25 @@ import Canvas from "./components/Canvas/Canvas";
 import { Toaster } from "sonner";
 import "animate.css";
 
+const CANVAS_MIN_WIDTH = 768;
+
 export default function App(): ReactElement {
   const { theme }: any = useContext(ThemeContext);
-  const { width }: any = useWindowDimensions();
+  const { width } = useWindowDimensions();
+  const showCanvas = width > CANVAS_MIN_WIDTH;
 
   useEffect(() => {
-    if (width > 768) {
-      renderCanvas();
-    }
-  }, [width]);
+    if (!showCanvas) return;
+
+    return renderCanvas();
+  }, [showCanvas]);
 
   return (
     <Fragment>
       <Toaster theme={theme} position="bottom-right" />
       <DisableRightClick />
       <AppRoutes />
-      {width > 768 && <Canvas />}
+      {showCanvas && <Canvas />}
     </Fragment>
   );
 }
