@@ -1,3 +1,11 @@
 import { createContext } from "react";
 
-export const SidebarContext: any = createContext<any>(null);
+export interface ISidebarContext {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+}
+
+export const SidebarContext = createContext<ISidebarContext>({
+  isOpen: false,
+  setIsOpen: () => undefined,
+});

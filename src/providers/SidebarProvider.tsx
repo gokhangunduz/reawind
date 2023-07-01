@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import React, { ReactElement, ReactNode, useState } from "react";
 import { SidebarContext } from "../contexts/SidebarContext";
 
-export default function SidebarProvider({ children }: any) {
+interface ISidebarProvider {
+  children: ReactNode;
+}
+
+export default function SidebarProvider({
+  children,
+}: ISidebarProvider): ReactElement {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
