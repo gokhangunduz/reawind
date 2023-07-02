@@ -1,22 +1,40 @@
-import React, { ReactElement, useEffect } from "react";
-import { ThemeContext } from "../contexts/ThemeContext";
+import React, { ReactElement, ReactNode, useEffect, useState } from "react";
+import { Theme, ThemeContext } from "../contexts/ThemeContext";
 
-export default function ThemeProvider({ children }: any): ReactElement {
-  const [theme, setTheme] = React.useState<string>(
-    localStorage.theme || "dark"
-  );
+interface IThemeProvider {
+  children: ReactNode;
+}
+
+const STORAGE_KEY = "theme";
+
+function getInitialTheme(): Theme {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored === "light" || stored === "dark") return stored;
+  } catch (error) {
+    // Storage can be unavailable (private mode, blocked cookies).
+  }
+
+  return window.matchMedia?.("(prefers-color-scheme: light)").matches
+    ? "light"
+    : "dark";
+}
+
+export default function ThemeProvider({
+  children,
+}: IThemeProvider): ReactElement {
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
 
   useEffect(() => {
-    localStorage.theme = theme;
+    try {
+      localStorage.setItem(STORAGE_KEY, theme);
+    } catch (error) {
+      // Ignore storage errors, the theme still applies for this session.
+    }
 
     const root = window.document.documentElement;
-    if (theme === "dark") {
-      root.classList.add("dark");
-      root.setAttribute("data-color-mode", "dark");
-    } else {
-      root.classList.remove("dark");
-      root.setAttribute("data-color-mode", "light");
-    }
+    root.classList.toggle("dark", theme === "dark");
+    root.setAttribute("data-color-mode", theme);
   }, [theme]);
 
   return (
