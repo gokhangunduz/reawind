@@ -3,7 +3,7 @@ import { ThemeContext } from "../../contexts/ThemeContext";
 import { TbMoon, TbSun } from "react-icons/tb";
 
 export const ThemeToggle: FC = () => {
-  const { theme, setTheme }: any = useContext(ThemeContext);
+  const { theme, setTheme } = useContext(ThemeContext);
 
   return (
     <button

@@ -6,7 +6,7 @@ import FooterItems from "../FooterItems/FooterItems";
 import { info } from "../../templates/template";
 
 export default function Sidebar(): ReactElement {
-  const { theme }: any = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
 
   const urls = [
     { url: "/", name: "Intro" },

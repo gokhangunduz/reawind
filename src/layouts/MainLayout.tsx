@@ -14,9 +14,9 @@ import LoadingBar from "react-top-loading-bar";
 import { ThemeContext } from "../contexts/ThemeContext";
 
 export default function MainLayout(): ReactElement {
-  const { isOpen, setIsOpen }: any = useContext(SidebarContext);
+  const { isOpen, setIsOpen } = useContext(SidebarContext);
   const [progress, setProgress] = useState(0);
-  const { theme }: any = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   const url = useLocation();
 
   useEffect(() => {

@@ -11,7 +11,7 @@ import emailjs from "@emailjs/browser";
 import { toast } from "sonner";
 
 export default function ContactForm(): ReactElement {
-  const { theme }: any = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   const recaptcha = useRef<Reaptcha>(null);
 
   const formik = useFormik({

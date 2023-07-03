@@ -11,7 +11,7 @@ import "animate.css";
 const CANVAS_MIN_WIDTH = 768;
 
 export default function App(): ReactElement {
-  const { theme }: any = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   const { width } = useWindowDimensions();
   const showCanvas = width > CANVAS_MIN_WIDTH;
 
