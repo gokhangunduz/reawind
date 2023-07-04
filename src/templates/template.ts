@@ -8,6 +8,11 @@ export const info = {
   locale: "en_US",
 };
 
+export const features = {
+  // Blocks the browser context menu on the whole site when enabled.
+  disableRightClick: false,
+};
+
 export const urls = {
   linkedin: "https://linkedin.com/in/gokhangunduz",
   github: "https://github.com/gokhangunduz",

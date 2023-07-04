@@ -1,15 +1,17 @@
-import React, { ReactElement, useEffect } from "react";
+import { useEffect } from "react";
 
-export default function DisableRightClick(): ReactElement {
+export default function DisableRightClick(): null {
   useEffect(() => {
-    const handleContextmenu = (e: any) => {
-      e.preventDefault();
+    const handleContextmenu = (event: MouseEvent) => {
+      event.preventDefault();
     };
+
     document.addEventListener("contextmenu", handleContextmenu);
-    return function cleanup() {
+
+    return () => {
       document.removeEventListener("contextmenu", handleContextmenu);
     };
   }, []);
 
-  return <></>;
+  return null;
 }

@@ -5,6 +5,7 @@ import { ThemeContext } from "./contexts/ThemeContext";
 import { renderCanvas } from "./helper/Canvas/Canvas";
 import useWindowDimensions from "./hooks/useWindowDimensions";
 import Canvas from "./components/Canvas/Canvas";
+import { features } from "./templates/template";
 import { Toaster } from "sonner";
 import "animate.css";
 
@@ -24,7 +25,7 @@ export default function App(): ReactElement {
   return (
     <Fragment>
       <Toaster theme={theme} position="bottom-right" />
-      <DisableRightClick />
+      {features.disableRightClick && <DisableRightClick />}
       <AppRoutes />
       {showCanvas && <Canvas />}
     </Fragment>
