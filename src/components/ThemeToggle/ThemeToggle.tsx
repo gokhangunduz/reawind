@@ -7,6 +7,8 @@ export const ThemeToggle: FC = () => {
 
   return (
     <button
+      type="button"
+      aria-label={`Switch to ${theme === "light" ? "dark" : "light"} theme`}
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
       className="cursor-pointer"
     >

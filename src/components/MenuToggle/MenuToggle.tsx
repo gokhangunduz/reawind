@@ -6,7 +6,13 @@ export const MenuToggle: FC = () => {
   const { isOpen, setIsOpen } = useContext(SidebarContext);
 
   return (
-    <button onClick={() => setIsOpen(!isOpen)} className="cursor-pointer">
+    <button
+      type="button"
+      aria-label={isOpen ? "Close menu" : "Open menu"}
+      aria-expanded={isOpen}
+      onClick={() => setIsOpen(!isOpen)}
+      className="cursor-pointer"
+    >
       <RxHamburgerMenu
         size={28}
         className="animate__animated animate__fadeIn"
