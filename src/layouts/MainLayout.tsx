@@ -11,40 +11,47 @@ import Footer from "../components/Footer/Footer";
 import { SidebarContext } from "../contexts/SidebarContext";
 import Sidebar from "../components/Sidebar/Sidebar";
 import LoadingBar from "react-top-loading-bar";
-import { ThemeContext } from "../contexts/ThemeContext";
 
 export default function MainLayout(): ReactElement {
   const { isOpen, setIsOpen } = useContext(SidebarContext);
   const [progress, setProgress] = useState(0);
-  const { theme } = useContext(ThemeContext);
-  const url = useLocation();
+  const location = useLocation();
 
   useEffect(() => {
-    handleSidebar();
+    setIsOpen(false);
+    window.scrollTo(0, 0);
     setProgress(50);
-    setTimeout(() => setProgress(100), 100);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [url]);
 
-  const handleSidebar = () => {
-    if (isOpen) {
-      setIsOpen(false);
-    }
-  };
+    const timer = setTimeout(() => setProgress(100), 100);
+
+    return () => clearTimeout(timer);
+  }, [location, setIsOpen]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsOpen(false);
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, setIsOpen]);
 
   return (
     <Fragment>
       <div
-        className={`${isOpen && "cursor-pointer"}`}
-        onClick={() => isOpen && handleSidebar()}
+        className={isOpen ? "cursor-pointer" : undefined}
+        onClick={() => isOpen && setIsOpen(false)}
       >
         <Header />
-        <div
+        <main
           className="px-6 lg:px-48 xl:px-80 2xl:px-[25rem]"
           style={{ minHeight: "calc(100vh - 14rem)" }}
         >
           <Outlet />
-        </div>
+        </main>
         <Footer />
       </div>
       {isOpen && <Sidebar />}
