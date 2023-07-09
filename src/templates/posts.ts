@@ -1,4 +1,6 @@
-export const posts = [
+import { IContent } from "./types";
+
+export const posts: IContent[] = [
   {
     url: "test",
     title: "Test Test",

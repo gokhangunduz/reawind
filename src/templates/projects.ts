@@ -1,4 +1,6 @@
-export const projects = [
+import { IContent } from "./types";
+
+export const projects: IContent[] = [
   {
     url: "how-to-work",
     title: "How to Work",
