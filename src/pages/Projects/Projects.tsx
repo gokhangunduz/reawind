@@ -4,6 +4,7 @@ import ListLayout from "../../layouts/ListLayout";
 import { projects } from "../../templates/projects";
 import { info, pages } from "../../templates/template";
 import ReactHelmet from "../../helper/ReactHelmet/ReactHelmet";
+import { sortByDate } from "../../utils/sortByDate";
 
 export default function Projects(): ReactElement {
   return (
@@ -18,7 +19,7 @@ export default function Projects(): ReactElement {
       />
       <ListLayout pageHeaderTitle="Projects">
         <Fragment>
-          {projects.map((project) => (
+          {sortByDate(projects).map((project) => (
             <GridItem
               key={project.url}
               type="project"
