@@ -3,18 +3,26 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Open source blog and portfolio template" />
+    <meta name="theme-color" content="#000000" />
+    <title>Reawind</title>
     <link rel="stylesheet" href="/css/style.css" />
     <meta name="designer" content="gokhangunduz.com.tr" />
     <script>
-      if (
-        localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
+      (function () {
+        var theme = null;
+        try {
+          theme = localStorage.getItem("theme");
+        } catch (error) {}
+
+        if (theme !== "light" && theme !== "dark") {
+          theme = window.matchMedia("(prefers-color-scheme: light)").matches
+            ? "light"
+            : "dark";
+        }
+
+        document.documentElement.classList.toggle("dark", theme === "dark");
+      })();
     </script>
   </head>
   <body
