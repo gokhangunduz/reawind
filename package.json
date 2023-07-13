@@ -29,6 +29,8 @@
   "scripts": {
     "start": "react-scripts start",
     "watch": "npx tailwindcss -i ./tailwind.css -o ./public/css/style.css --watch",
+    "build:css": "tailwindcss -i ./tailwind.css -o ./public/css/style.css",
+    "typecheck": "tsc --noEmit",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
